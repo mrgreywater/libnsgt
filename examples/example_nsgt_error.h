@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <math.h>
+#include <malloc.h>
 
 void example_nsgt_error(double *input, size_t len, int samplerate) {
     printf("Test full nsgt\r\n");

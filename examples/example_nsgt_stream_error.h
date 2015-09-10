@@ -2,6 +2,10 @@
 #define NSGT_EXAMPLE_NSGT_STREAM_ERROR_H
 
 #include "example_utils.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <string.h>
 
 void example_stream_error(double *input_real, size_t len, int samplerate) {
     printf("Test nsgt stream (sliCQ)\r\n");
@@ -29,8 +33,12 @@ void example_stream_error(double *input_real, size_t len, int samplerate) {
     for (size_t i = 0; i < len / blocksize + 1; i++) {
         //prepare input for nsgt, the last block only contains padding
         memset(f_slice, 0, blocksize * sizeof(nsgt_complex_t));
-        size_t remaining = (size_t) max(0, min(blocksize, (int) (len - i * blocksize)));
-        copy_real_to_complex(input_real + i * blocksize, f_slice, remaining);
+        int remaining = (int) (len - i * blocksize);
+        if (blocksize < remaining)
+            remaining = blocksize;
+        if (remaining < 0)
+            remaining = 0;
+        copy_real_to_complex(input_real + i * blocksize, f_slice, (size_t) remaining);
 
         time_point_t forward_time = timer_start();
         nsgt_stream_forward(nsgt); //2 * hhop in
