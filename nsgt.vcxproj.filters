@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="nsgt.h" />
+    <ClInclude Include="examples\example_utils.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\example_nsgt_error.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\example_nsgt_stream_error.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\example_spectrogram.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="nsgt.c" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="examples">
+      <UniqueIdentifier>{a3b35398-4fce-48f4-b363-eb58860235c9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
